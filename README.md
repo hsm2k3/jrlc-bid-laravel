@@ -1,7 +1,7 @@
 <p>To set up docker check the <a href="https://docs.docker.com/">official documentation</a>.</p>
 <p>To setup the app for the first time with docker use this command in cli <code>sudo docker-compose build app</code>.</p>
 <p>If everything installs successfully than setup the project in the background with the command <code>sudo docker-compose up -d</code> or <code>sudo docker-compose up</code> in the active cli.</p>
-<p>To seed the database with fake data run <code>sudo docker-compose exec app bash</code> and from the docker image cli enter <code>./artisan db:seed
+<p>To seed the database with fake data run <code>sudo docker-compose exec app bash</code> and from the docker image cli first enter <code>./artisan migrate</code> than<code>./artisan db:seed
 </code></p>
 
 <p>Below is Laravel's standard README.md</p>
