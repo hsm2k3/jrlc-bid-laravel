@@ -14,7 +14,8 @@ class BidController extends Controller
      */
     public function index()
     {
-        //
+        $bids = Bid::latest('aliyah')->first();
+        return response()->json($bids);
     }
 
     /**
@@ -24,9 +25,7 @@ class BidController extends Controller
      */
     public function create()
     {
-        $bids = Bid::get();
-
-        return view('/', compact('bids'));
+        //
     }
 
     /**

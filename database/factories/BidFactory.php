@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Bid;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BidFactory extends Factory
@@ -22,6 +23,9 @@ class BidFactory extends Factory
     public function definition()
     {
         return [
+            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
+            'updated_at' => Carbon::now()->subMinutes(rand(1, 55)),
+            'aliyah' => $this->faker->randomNumber(),
             'name' => $this->faker->name(),
             'designation' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),

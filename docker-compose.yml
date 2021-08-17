@@ -12,10 +12,10 @@ services:
         restart: unless-stopped
         working_dir: /var/www/
 #        command: bash -c 'php artisan migrate'
-        depends_on:
-            -   db
-        links:
-            -   db
+#        depends_on:
+#            -   db
+#        links:
+#            -   db
         volumes:
             - ./:/var/www
         networks:

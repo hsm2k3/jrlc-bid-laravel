@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bid', [BidController::class, 'create'])->name('bid');
+Route::get('/bid', [BidController::class, 'index'])->name('bid');
