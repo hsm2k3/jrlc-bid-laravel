@@ -3,7 +3,7 @@ services:
     app:
         build:
             args:
-                user: sammy
+                user: jrlc-bid
                 uid: 1000
             context: ./
             dockerfile: Dockerfile
@@ -11,6 +11,11 @@ services:
         container_name: jrlc-bid-laravel-app
         restart: unless-stopped
         working_dir: /var/www/
+        #        command: bash -c 'php artisan migrate'
+        #        depends_on:
+        #            -   db
+        #        links:
+        #            -   db
         volumes:
             - ./:/var/www
         networks:
@@ -37,7 +42,7 @@ services:
         container_name: jrlc-bid-laravel-nginx
         restart: unless-stopped
         ports:
-            - 8001:80
+            - '8000:80'
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
