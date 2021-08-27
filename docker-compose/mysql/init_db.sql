@@ -14,8 +14,6 @@ CREATE TABLE `holiday` (
                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-
 DROP TABLE IF EXISTS `first_aliyah`;
 
 CREATE TABLE `first_aliyah` (

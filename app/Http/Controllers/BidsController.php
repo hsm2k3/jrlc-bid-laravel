@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\HighestBidsService;
 use Illuminate\Http\Request;
 
 class BidsController extends Controller
@@ -11,9 +12,12 @@ class BidsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(HighestBidsService $highestBidsService)
     {
-        //
+
+        if($highestBidsService->getHighestBids() == null)
+            return response()->noContent();
+        return response()->json($highestBidsService->getHighestBids());
     }
 
     /**
