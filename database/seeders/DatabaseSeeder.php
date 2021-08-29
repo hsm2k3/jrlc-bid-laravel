@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             HolidaySeeder::class,
+            OpeningTheArkSeeder::class,
+            FirstAliyahSeeder::class,
+            SecondAliyahSeeder::class,
+            ThirdAliyahSeeder::class,
+            FourthAliyahSeeder::class,
+            FifthAliyahSeeder::class,
+            MaftirSeeder::class,
         ]);
     }
 }

@@ -5,46 +5,53 @@ namespace App\Services;
 use App\Models\FifthAliyah;
 use App\Models\FirstAliyah;
 use App\Models\FourthAliyah;
+use App\Models\Holiday;
 use App\Models\Maftir;
 use App\Models\OpeningTheArk;
 use App\Models\SecondAliyah;
 use App\Models\ThirdAliyah;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HighestBidsService
 {
-    private $highestBids = [
-        "OpeningTheArk" => "",
-        "FirstAliyah" => "",
-        "SecondAliyah" => "",
-        "ThirdAliyah" => "",
-        "FourthAliyah" => "",
-        "FifthAliyah" => "",
-        "Maftir" => "",
-        ];
+    private $highestBids = [];
+    private $openingTheArk;
+    private $firstAliyah;
+    private $secondAliyah;
+    private $thirdAliyah;
+    private $fourthAliyah;
+    private $fifthAliyah;
+    private $maftir;
 
     public function getHighestBids()
     {
-        $this->highestBids["OpeningTheArk"] = $this->openingTheArk = OpeningTheArk::latest('updated_at')->first();
-        $this->highestBids["FirstAliyah"] = $this->firstAliyah = FirstAliyah::latest('updated_at')->first();
-        $this->highestBids["SecondAliyah"] = $this->secondAliyah = SecondAliyah::latest('updated_at')->first();
-        $this->highestBids["ThirdAliyah"] = $this->thirdAliyah = ThirdAliyah::latest('updated_at')->first();
-        $this->highestBids["FourthAliyah"] = $this->fourthAliyah = FourthAliyah::latest('updated_at')->first();
-        $this->highestBids["FifthAliyah"] = $this->fifthAliyah = FifthAliyah::latest('updated_at')->first();
-        $this->highestBids["Maftir"] = $this->maftir = Maftir::latest('updated_at')->first();
-        return $this->highestBids;
-
+        $holidays = Holiday::all();
+        $json = array();
+        foreach($holidays as $holiday)
+        {
+            $this->setHighestBids($holiday->id);
+            $json[] = [$holiday->id, $holiday->holiday, $this->highestBids];
+        }
+        return $json;
     }
 
-    public function isOpeningTheArk() : bool
+    /**
+     * @param $id
+     */
+    public function setHighestBids($id)
     {
-        try{
-            $this->openingTheArk = OpeningTheArk::latest('created_at')->firstOrFail();
-            return true;
-        }
-        catch(ModelNotFoundException $e)
-        {
-            return false;
-        }
+        $this->openingTheArk = OpeningTheArk::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->firstAliyah = FirstAliyah::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->secondAliyah = SecondAliyah::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->thirdAliyah = ThirdAliyah::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->fourthAliyah = FourthAliyah::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->fifthAliyah = FifthAliyah::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->maftir = Maftir::select('id', 'amount', 'description')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $this->highestBids["Opening The Ark"] = $this->openingTheArk;
+        $this->highestBids["First Aliyah"] = $this->firstAliyah;
+        $this->highestBids["Second Aliyah"] = $this->secondAliyah;
+        $this->highestBids["Third Aliyah"] = $this->thirdAliyah;
+        $this->highestBids["Fourth Aliyah"] = $this->fourthAliyah;
+        $this->highestBids["Fifth Aliyah"] = $this->fifthAliyah;
+        $this->highestBids["Maftir"] = $this->maftir;
     }
 }
