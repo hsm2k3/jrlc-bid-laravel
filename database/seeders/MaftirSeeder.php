@@ -16,9 +16,10 @@ class MaftirSeeder extends Seeder
     public function run()
     {
         Maftir::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Maftir',
             'designation' => '',
             'email' => '',
             'phone' => '',
@@ -28,9 +29,10 @@ class MaftirSeeder extends Seeder
             'holiday_id' => 1,
         ]);
         Maftir::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Maftir',
             'designation' => '',
             'email' => '',
             'phone' => '',
@@ -40,9 +42,10 @@ class MaftirSeeder extends Seeder
             'holiday_id' => 2,
         ]);
         Maftir::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Maftir',
             'designation' => '',
             'email' => '',
             'phone' => '',

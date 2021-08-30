@@ -16,9 +16,10 @@ class SecondAliyahSeeder extends Seeder
     public function run()
     {
         SecondAliyah::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Second Aliyah',
             'designation' => '',
             'email' => '',
             'phone' => '',
@@ -28,9 +29,10 @@ class SecondAliyahSeeder extends Seeder
             'holiday_id' => 1,
         ]);
         SecondAliyah::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Second Aliyah',
             'designation' => '',
             'email' => '',
             'phone' => '',
@@ -40,9 +42,10 @@ class SecondAliyahSeeder extends Seeder
             'holiday_id' => 2,
         ]);
         SecondAliyah::create([
-            'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
-            'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
             'name' => '',
+            'aliyah' => 'Second Aliyah',
             'designation' => '',
             'email' => '',
             'phone' => '',

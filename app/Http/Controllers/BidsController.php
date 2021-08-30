@@ -17,7 +17,7 @@ class BidsController extends Controller
     public function index(HighestBidsService $highestBidsService)
     {
         try {
-            $highestBidsService->getHighestBids();
+//            dd(response()->json($highestBidsService->getHighestBids()));
             return response()->json($highestBidsService->getHighestBids());
         }
         catch(Throwable $e)
@@ -79,7 +79,7 @@ class BidsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

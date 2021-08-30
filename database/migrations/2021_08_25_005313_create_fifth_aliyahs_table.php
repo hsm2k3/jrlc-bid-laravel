@@ -17,7 +17,8 @@ class CreateFifthAliyahsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('designation');
+            $table->string('aliyah');
+            $table->string('designation')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('comment')->nullable();
