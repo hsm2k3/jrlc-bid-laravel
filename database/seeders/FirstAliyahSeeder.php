@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\FirstAliyah;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class FirstAliyahSeeder extends Seeder
@@ -14,6 +15,44 @@ class FirstAliyahSeeder extends Seeder
      */
     public function run()
     {
-        FirstAliyah::factory()->times(100)->create();
+        FirstAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'First Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 1,
+        ]);
+        FirstAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'First Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 2,
+        ]);
+        FirstAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'First Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 3,
+        ]);
     }
 }

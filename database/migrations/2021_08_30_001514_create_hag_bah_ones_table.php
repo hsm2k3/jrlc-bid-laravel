@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOpeningTheArksTable extends Migration
+class CreateHagBahOnesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOpeningTheArksTable extends Migration
      */
     public function up()
     {
-        Schema::create('opening_the_arks', function (Blueprint $table) {
+        Schema::create('hag_bah_ones', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name');
@@ -35,6 +35,6 @@ class CreateOpeningTheArksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('opening_the_arks');
+        Schema::dropIfExists('hag_bah_ones');
     }
 }

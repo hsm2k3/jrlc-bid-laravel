@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\FourthAliyah;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class FourthAliyahSeeder extends Seeder
@@ -14,6 +15,44 @@ class FourthAliyahSeeder extends Seeder
      */
     public function run()
     {
-        FourthAliyah::factory()->times(100)->create();
+        FourthAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'Fourth Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 1,
+        ]);
+        FourthAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'Fourth Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 2,
+        ]);
+        FourthAliyah::create([
+            'created_at' => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+            'name' => '',
+            'aliyah' => 'Fourth Aliyah',
+            'designation' => '',
+            'email' => '',
+            'phone' => '',
+            'comment' => '',
+            'description' => '',
+            'amount' => 0,
+            'holiday_id' => 3,
+        ]);
     }
 }

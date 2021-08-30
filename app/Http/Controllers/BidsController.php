@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\PreventRequestsDuringMaintenance;
+use App\Services\HighestBidsService;
 use Illuminate\Http\Request;
+use Throwable;
 
 class BidsController extends Controller
 {
@@ -11,9 +14,17 @@ class BidsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(HighestBidsService $highestBidsService)
     {
-        //
+        try {
+//            dd(response()->json($highestBidsService->getHighestBids()));
+            return response()->json($highestBidsService->getHighestBids());
+        }
+        catch(Throwable $e)
+        {
+            report($e);
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -68,7 +79,7 @@ class BidsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

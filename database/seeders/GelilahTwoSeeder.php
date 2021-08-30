@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\ThirdAliyah;
+use App\Models\GelilahTwo;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class ThirdAliyahSeeder extends Seeder
+class GelilahTwoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class ThirdAliyahSeeder extends Seeder
      */
     public function run()
     {
-        ThirdAliyah::create([
+        GelilahTwo::create([
             'created_at' => Carbon::now(),
             'updated_at'  => Carbon::now(),
             'name' => '',
-            'aliyah' => 'Third Aliyah',
+            'aliyah' => 'Gelilah Two',
             'designation' => '',
             'email' => '',
             'phone' => '',
@@ -28,24 +28,24 @@ class ThirdAliyahSeeder extends Seeder
             'amount' => 0,
             'holiday_id' => 1,
         ]);
-        ThirdAliyah::create([
+        GelilahTwo::create([
             'created_at' => Carbon::now(),
             'updated_at'  => Carbon::now(),
             'name' => '',
-            'aliyah' => 'Third Aliyah',
+            'aliyah' => 'Gelilah Two',
             'designation' => '',
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'description' => '',
+            'description' => 'test',
             'amount' => 0,
             'holiday_id' => 2,
         ]);
-        ThirdAliyah::create([
+        GelilahTwo::create([
             'created_at' => Carbon::now(),
             'updated_at'  => Carbon::now(),
             'name' => '',
-            'aliyah' => 'Third Aliyah',
+            'aliyah' => 'Gelilah Two',
             'designation' => '',
             'email' => '',
             'phone' => '',

@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Holiday extends Model
+class GelilahOne extends Model
 {
     use HasFactory;
-
-    public function openingTheArk()
-    {
-        return $this->hasMany(OpeningTheArk::class);
-    }
 }
