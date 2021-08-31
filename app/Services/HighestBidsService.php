@@ -21,7 +21,6 @@ use App\Models\ThirdAliyah;
 
 class HighestBidsService
 {
-    private $highestBids = [];
     private $openingTheArk;
     private $firstAliyah;
     private $secondAliyah;
@@ -43,8 +42,8 @@ class HighestBidsService
         $holidays = Holiday::all();
         foreach($holidays as $holiday)
         {
-            $this->setHighestBids($holiday->id);
-            $json[] = ["key" => $holiday->id, "title" => $holiday->holiday, "biddingItems" =>  $this->highestBids];
+            $highestBids = $this->setHighestBids($holiday->id);
+            $json[] = ["key" => $holiday->id, "title" => $holiday->holiday, "biddingItems" =>  $highestBids];
         }
         return $json;
     }
@@ -69,20 +68,60 @@ class HighestBidsService
         $this->puttingOnTheCrownTwo = PuttingOnTheCrownTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
         $this->puttingOnTheShieldOne = PuttingOnTheShieldOne::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
         $this->puttingOnTheShieldTwo = PuttingOnTheShieldTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->highestBids[] = $this->openingTheArk;
-        $this->highestBids[] = $this->firstAliyah;
-        $this->highestBids[] = $this->secondAliyah;
-        $this->highestBids[] = $this->thirdAliyah;
-        $this->highestBids[] = $this->fourthAliyah;
-        $this->highestBids[] = $this->fifthAliyah;
-        $this->highestBids[] = $this->maftir;
-        $this->highestBids[] = $this->hagBahOne;
-        $this->highestBids[] = $this->hagBahTwo;
-        $this->highestBids[] = $this->gelilahOne;
-        $this->highestBids[] = $this->gelilahTwo;
-        $this->highestBids[] = $this->puttingOnTheCrownOne;
-        $this->highestBids[] = $this->puttingOnTheCrownTwo;
-        $this->highestBids[] = $this->puttingOnTheShieldOne;
-        $this->highestBids[] = $this->puttingOnTheShieldTwo;
+        switch($id)
+        {
+            case 1:
+                $highestBids[] = $this->openingTheArk;
+                $highestBids[] = $this->firstAliyah;
+                $highestBids[] = $this->secondAliyah;
+                $highestBids[] = $this->thirdAliyah;
+                $highestBids[] = $this->fourthAliyah;
+                $highestBids[] = $this->fifthAliyah;
+                $highestBids[] = $this->maftir;
+                $highestBids[] = $this->hagBahOne;
+                $highestBids[] = $this->hagBahTwo;
+                $highestBids[] = $this->gelilahOne;
+                $highestBids[] = $this->gelilahTwo;
+                $highestBids[] = $this->puttingOnTheCrownOne;
+                $highestBids[] = $this->puttingOnTheCrownTwo;
+                $highestBids[] = $this->puttingOnTheShieldOne;
+                $highestBids[] = $this->puttingOnTheShieldTwo;
+                break;
+            case 2:
+                $highestBids[] = $this->openingTheArk;
+                $highestBids[] = $this->firstAliyah;
+                $highestBids[] = $this->secondAliyah;
+                $highestBids[] = $this->thirdAliyah;
+                $highestBids[] = $this->fourthAliyah;
+                $highestBids[] = $this->fifthAliyah;
+                $highestBids[] = $this->maftir;
+                $highestBids[] = $this->hagBahOne;
+                $highestBids[] = $this->hagBahTwo;
+                $highestBids[] = $this->gelilahOne;
+                $highestBids[] = $this->gelilahTwo;
+                $highestBids[] = $this->puttingOnTheCrownOne;
+                $highestBids[] = $this->puttingOnTheCrownTwo;
+                $highestBids[] = $this->puttingOnTheShieldOne;
+                $highestBids[] = $this->puttingOnTheShieldTwo;
+                break;
+            case 3:
+                $highestBids[] = $this->openingTheArk;
+                $highestBids[] = $this->firstAliyah;
+                $highestBids[] = $this->secondAliyah;
+                $highestBids[] = $this->thirdAliyah;
+                $highestBids[] = $this->fourthAliyah;
+                $highestBids[] = $this->fifthAliyah;
+                $highestBids[] = $this->maftir;
+                $highestBids[] = $this->hagBahOne;
+                $highestBids[] = $this->hagBahTwo;
+                $highestBids[] = $this->gelilahOne;
+                $highestBids[] = $this->gelilahTwo;
+                $highestBids[] = $this->puttingOnTheCrownOne;
+                $highestBids[] = $this->puttingOnTheCrownTwo;
+                $highestBids[] = $this->puttingOnTheShieldOne;
+                $highestBids[] = $this->puttingOnTheShieldTwo;
+                break;
+        }
+        return $highestBids;
     }
 }
