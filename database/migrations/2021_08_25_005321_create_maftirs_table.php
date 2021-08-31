@@ -22,7 +22,6 @@ class CreateMaftirsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('comment')->nullable();
-            $table->string('description')->nullable();
             $table->decimal('amount');
             $table->foreignId('holiday_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete()->onDelete('cascade');
         });

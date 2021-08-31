@@ -24,7 +24,6 @@ class FifthAliyahSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'description' => '',
             'amount' => 0,
             'holiday_id' => 1,
         ]);
@@ -37,7 +36,6 @@ class FifthAliyahSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'description' => '',
             'amount' => 0,
             'holiday_id' => 2,
         ]);
@@ -50,7 +48,6 @@ class FifthAliyahSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'description' => '',
             'amount' => 0,
             'holiday_id' => 3,
         ]);
