@@ -21,8 +21,12 @@ use App\Models\ThirdAliyah;
 
 class HighestBidsService
 {
-    public function getHighestBids()
+    /**
+     * @return array
+     */
+    public function getHighestBids() : array
     {
+        $json = [];
         $holidays = Holiday::all();
         foreach($holidays as $holiday)
         {
@@ -34,8 +38,9 @@ class HighestBidsService
 
     /**
      * @param int $id
+     * @return array
      */
-    public function setHighestBids($id)
+    public function setHighestBids(int $id) : array
     {
         $highestBids[] = OpeningTheArk::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
         $highestBids[] = FirstAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
