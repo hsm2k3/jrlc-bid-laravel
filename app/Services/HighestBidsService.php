@@ -21,22 +21,6 @@ use App\Models\ThirdAliyah;
 
 class HighestBidsService
 {
-    private $openingTheArk;
-    private $firstAliyah;
-    private $secondAliyah;
-    private $thirdAliyah;
-    private $fourthAliyah;
-    private $fifthAliyah;
-    private $maftir;
-    private $hagBahOne;
-    private $hagBahTwo;
-    private $gelilahOne;
-    private $gelilahTwo;
-    private $puttingOnTheCrownOne;
-    private $puttingOnTheCrownTwo;
-    private $puttingOnTheShieldOne;
-    private $puttingOnTheShieldTwo;
-
     public function getHighestBids()
     {
         $holidays = Holiday::all();
@@ -49,7 +33,7 @@ class HighestBidsService
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
     public function setHighestBids($id)
     {
