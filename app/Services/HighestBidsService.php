@@ -45,7 +45,6 @@ class HighestBidsService
             $highestBids = $this->setHighestBids($holiday->id);
             $json[] = ["key" => $holiday->id, "title" => $holiday->holiday, "biddingItems" =>  $highestBids];
         }
-        dd($json);
         return $json;
     }
 
@@ -54,36 +53,21 @@ class HighestBidsService
      */
     public function setHighestBids($id)
     {
-        $this->openingTheArk = OpeningTheArk::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->firstAliyah = FirstAliyah::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->secondAliyah = SecondAliyah::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->thirdAliyah = ThirdAliyah::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->fourthAliyah = FourthAliyah::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->fifthAliyah = FifthAliyah::select('id', 'aliyah', 'amount', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->maftir = Maftir::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->hagBahOne = HagBahOne::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->hagBahTwo = HagBahTwo::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->gelilahOne = GelilahOne::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->gelilahTwo = GelilahTwo::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->puttingOnTheCrownOne = PuttingOnTheCrownOne::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->puttingOnTheCrownTwo = PuttingOnTheCrownTwo::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->puttingOnTheShieldOne = PuttingOnTheShieldOne::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $this->puttingOnTheShieldTwo = PuttingOnTheShieldTwo::select('id', 'amount', 'aliyah', 'holiday_id')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $highestBids[] = $this->openingTheArk;
-        $highestBids[] = $this->firstAliyah;
-        $highestBids[] = $this->secondAliyah;
-        $highestBids[] = $this->thirdAliyah;
-        $highestBids[] = $this->fourthAliyah;
-        $highestBids[] = $this->fifthAliyah;
-        $highestBids[] = $this->maftir;
-        $highestBids[] = $this->hagBahOne;
-        $highestBids[] = $this->hagBahTwo;
-        $highestBids[] = $this->gelilahOne;
-        $highestBids[] = $this->gelilahTwo;
-        $highestBids[] = $this->puttingOnTheCrownOne;
-        $highestBids[] = $this->puttingOnTheCrownTwo;
-        $highestBids[] = $this->puttingOnTheShieldOne;
-        $highestBids[] = $this->puttingOnTheShieldTwo;
+        $highestBids[] = OpeningTheArk::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = FirstAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = SecondAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = ThirdAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = FourthAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = FifthAliyah::select('id', 'aliyah', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = Maftir::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = HagBahOne::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = HagBahTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = GelilahOne::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = GelilahTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = PuttingOnTheCrownOne::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = PuttingOnTheCrownTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = PuttingOnTheShieldOne::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
+        $highestBids[] = PuttingOnTheShieldTwo::select('id', 'amount', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
         return $highestBids;
     }
 }
