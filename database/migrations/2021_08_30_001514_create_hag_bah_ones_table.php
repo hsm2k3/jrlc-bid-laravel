@@ -16,6 +16,7 @@ class CreateHagBahOnesTable extends Migration
         Schema::create('hag_bah_ones', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

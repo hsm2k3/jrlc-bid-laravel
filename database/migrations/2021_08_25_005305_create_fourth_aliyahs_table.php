@@ -16,6 +16,7 @@ class CreateFourthAliyahsTable extends Migration
         Schema::create('fourth_aliyahs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

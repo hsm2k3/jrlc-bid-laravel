@@ -20,4 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/bids', [BidsController::class, 'index']);
-Route::post('/bids/{id}/update', [BidsController::class, 'update']);
+Route::post('/bids/{id}/create', [BidsController::class, 'create']);
+
+Route::fallback(function() {
+    return 'Access Denied';
+});

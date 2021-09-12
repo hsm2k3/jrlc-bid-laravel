@@ -16,6 +16,7 @@ class CreateOpeningTheArksTable extends Migration
         Schema::create('opening_the_arks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

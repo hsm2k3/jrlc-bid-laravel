@@ -33,8 +33,6 @@ class BidsController extends Controller
     public function index(HighestBidsService $highestBidsService)
     {
         try {
-//            $aliyahs = [OpeningTheArk::class, FirstAliyah::class, SecondAliyah::class, ThirdAliyah::class, FourthAliyah::class, FifthAliyah::class, Maftir::class, HagBahOne::class,  HagBahTwo::class, GelilahOne::class, GelilahTwo::class, PuttingOnTheCrownOne::class, PuttingOnTheCrownTwo::class, PuttingOnTheShieldOne::class, PuttingOnTheShieldTwo::class];
-//            dd($aliyahs[1]);
             return response()->json($highestBidsService->getHighestBids());
         }
         catch(Throwable $e)
@@ -51,9 +49,42 @@ class BidsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $aliyahs = [
+            OpeningTheArk::class => "Opening the ark",
+            FirstAliyah::class => "First Aliyah",
+            SecondAliyah::class => "Second Aliyah",
+            ThirdAliyah::class => "Third Aliyah",
+            FourthAliyah::class => "Fourth Aliyah",
+            FifthAliyah::class => "Fifth Aliyah",
+            Maftir::class => "Maftir",
+            HagBahOne::class => "Hag Bah One",
+            HagBahTwo::class => "Hag Bah Two",
+            GelilahOne::class => "Gelilah One",
+            GelilahTwo::class => "Gelilah Two",
+            PuttingOnTheCrownOne::class => "Putting on the crown one",
+            PuttingOnTheCrownTwo::class => "Putting on the crown two",
+            PuttingOnTheShieldOne::class => "Putting on the shield one",
+            PuttingOnTheShieldTwo::class => "Putting on the shield two",
+        ];
+        foreach($aliyahs as $key => $value)
+        {
+            if($request->input('aliyah') == $value)
+                $key::create([
+                    'holiday_id' => $id,
+                    'aliyah' => $value,
+                    'name' => $data['name'],
+                    'designation' => $data['designation'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'amount' => $data['amount'],
+                    'comment' => $data['comment'],
+                ]);
+        }
+        return response(200);
     }
 
     /**
@@ -98,23 +129,7 @@ class BidsController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $aliyahs = [OpeningTheArk::class, FirstAliyah::class, SecondAliyah::class, ThirdAliyah::class, FourthAliyah::class, FifthAliyah::class, Maftir::class, HagBahOne::class,  HagBahTwo::class, GelilahOne::class, GelilahTwo::class, PuttingOnTheCrownOne::class, PuttingOnTheCrownTwo::class, PuttingOnTheShieldOne::class, PuttingOnTheShieldTwo::class];
-//        dd($aliyahs);
-//        $aliyahStr = ["App\Models\OpeningTheArk" => "Opening the ark", "App\Models\FirstAliyah" => "First Aliyah", "App\Models\SecondAliyah" => "Second Aliyah", "App\Models\ThirdAliyah" => "Third Aliyah", "App\Models\FourthAliyah" => "Fourth Aliyah", "App\Models\FifthAliyah" => "Fifth Aliyah", "App\Models\Maftir" => "Maftir", "App\Models\HagBahOne" => "Hag Bah One", "App\Models\HagBahTwo" => "Hag Bah Two", "App\Models\GelilahOne" => "Gelilah One", "App\Models\GelilahTwo" => "Gelilah Two", "App\Models\PuttingOnTheCrownOne" => "Putting on the crown one", "App\Models\PuttingOnTheCrownTwo" => "Putting on the crown two", "App\Models\PuttingOnTheShieldOne" => "Putting on the shield one", "App\Models\PuttingOnTheShieldTwo" => "Putting on the shield two"];
-//        for($i = 0; $i < count($aliyahs); $i++)
-//            if($aliyahStr[$i] == $aliyahs[$i])
-//                dd($aliyahStr[$i]);
-//            $i = 0;
-//            foreach($aliyahStr as $key => $value)
-//            {
-//                if($aliyahs[$i] == $key)
-//                    $aliyahs[$i]::where(['holiday_id' => $id, 'aliyah' => $value])->update($data);
-//                $i++;
-//            }
-//
-//        \App\Models\OpeningTheArk::where(['holiday_id' => $id, 'aliyah' => $value])->update($data);
-
-
+        //
     }
 
     /**

@@ -16,6 +16,7 @@ class CreateFirstAliyahsTable extends Migration
         Schema::create('first_aliyahs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

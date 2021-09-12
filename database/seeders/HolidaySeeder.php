@@ -19,16 +19,19 @@ class HolidaySeeder extends Seeder
             'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
             'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
             'holiday' => 'Rosh Hashanah Day 1',
+            'description' => '',
         ]);
         Holiday::create([
             'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
             'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
             'holiday' => 'Rosh Hashanah Day 2',
+            'description' => '',
         ]);
         Holiday::create([
             'created_at' => Carbon::now()->subMinutes(rand(1, 55)),
             'updated_at'  => Carbon::now()->subMinutes(rand(1, 55)),
             'holiday' => 'Yom Kippur',
+            'description' => '',
         ]);
     }
 }

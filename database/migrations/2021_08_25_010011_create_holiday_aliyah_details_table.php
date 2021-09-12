@@ -16,6 +16,7 @@ class CreateHolidayAliyahDetailsTable extends Migration
         Schema::create('holiday_aliyah_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('details')->nullable();
             $table->foreignId('holiday_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete()->onDelete('cascade');
         });

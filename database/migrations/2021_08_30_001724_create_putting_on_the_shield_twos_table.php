@@ -16,6 +16,7 @@ class CreatePuttingOnTheShieldTwosTable extends Migration
         Schema::create('putting_on_the_shield_twos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

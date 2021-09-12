@@ -16,6 +16,7 @@ class CreateMaftirsTable extends Migration
         Schema::create('maftirs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('name');
             $table->string('aliyah');
             $table->string('designation')->nullable();

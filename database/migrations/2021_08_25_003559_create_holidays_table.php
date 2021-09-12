@@ -16,7 +16,9 @@ class CreateHolidaysTable extends Migration
         Schema::create('holidays', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->string('holiday');
+            $table->string('description');
         });
     }
 
