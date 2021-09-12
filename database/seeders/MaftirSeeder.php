@@ -24,7 +24,7 @@ class MaftirSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'amount' => 0,
+            'amount' => 180,
             'holiday_id' => 1,
         ]);
         Maftir::create([
@@ -36,7 +36,7 @@ class MaftirSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'amount' => 0,
+            'amount' => 180,
             'holiday_id' => 2,
         ]);
         Maftir::create([
@@ -48,7 +48,7 @@ class MaftirSeeder extends Seeder
             'email' => '',
             'phone' => '',
             'comment' => '',
-            'amount' => 0,
+            'amount' => 180,
             'holiday_id' => 3,
         ]);
     }
