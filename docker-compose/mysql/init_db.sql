@@ -18,6 +18,7 @@ CREATE TABLE `holidays` (
                             `updated_at` timestamp NULL DEFAULT NULL,
                             `deleted_at` timestamp NULL DEFAULT NULL,
                             `holiday` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+                            `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -27,7 +28,7 @@ CREATE TABLE `migrations` (
                               `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                               `batch` int NOT NULL,
                               PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
