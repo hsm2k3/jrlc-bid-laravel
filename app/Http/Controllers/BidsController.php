@@ -20,6 +20,7 @@ use App\Models\PuttingOnTheShieldTwo;
 use App\Models\SecondAliyah;
 use App\Models\ThirdAliyah;
 use App\Services\HighestBidsService;
+use App\Services\SearchableAliyahModelService;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -52,39 +53,23 @@ class BidsController extends Controller
     public function create(Request $request, $id)
     {
         $data = $request->all();
-
-        $aliyahs = [
-            OpeningTheArk::class => "Opening the ark",
-            FirstAliyah::class => "First Aliyah",
-            SecondAliyah::class => "Second Aliyah",
-            ThirdAliyah::class => "Third Aliyah",
-            FourthAliyah::class => "Fourth Aliyah",
-            FifthAliyah::class => "Fifth Aliyah",
-            Maftir::class => "Maftir",
-            HagBahOne::class => "Hag Bah One",
-            HagBahTwo::class => "Hag Bah Two",
-            GelilahOne::class => "Gelilah One",
-            GelilahTwo::class => "Gelilah Two",
-            PuttingOnTheCrownOne::class => "Putting on the crown one",
-            PuttingOnTheCrownTwo::class => "Putting on the crown two",
-            PuttingOnTheShieldOne::class => "Putting on the shield one",
-            PuttingOnTheShieldTwo::class => "Putting on the shield two",
-        ];
-        foreach($aliyahs as $key => $value)
-        {
-            if($request->input('aliyah') == $value)
-                $key::create([
-                    'holiday_id' => $id,
-                    'aliyah' => $value,
-                    'name' => $data['name'],
-                    'designation' => $data['designation'],
-                    'email' => $data['email'],
-                    'phone' => $data['phone'],
-                    'amount' => $data['amount'],
-                    'comment' => $data['comment'],
-                ]);
+        $searchable = new SearchableAliyahModelService();
+        $aliyahModel = $searchable->getAliyah($data);
+        if($aliyahModel != null) {
+            $aliyahModel::create([
+                'holiday_id' => $id,
+                'aliyah' => $request->input('aliyah'),
+                'name' => $data['name'],
+                'designation' => $data['designation'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'amount' => $data['amount'],
+                'comment' => $data['comment'],
+            ]);
+            return response(200);
         }
-        return response(200);
+        else
+            return response(404);
     }
 
     /**
