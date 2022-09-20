@@ -89,9 +89,18 @@ class BidsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(HighestBidsService $highestBidsService)
     {
-        //
+        try {
+            return response()->json($highestBidsService->getAllBids());
+        }
+        catch(Throwable $e)
+        {
+            report($e);
+            return $e->getMessage();
+        }
+
+        return abort(500, 'error: 500');
     }
 
     /**

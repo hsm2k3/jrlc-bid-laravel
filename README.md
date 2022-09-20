@@ -1,15 +1,24 @@
-<p>To set up docker check the <a href="https://docs.docker.com/">official documentation</a>.</p>
-<p>To setup the app for the first time with docker use this command in cli <code>sudo docker-compose build app</code>. Make your <code>.env</code> file like this:
-<br><code>
-DB_CONNECTION=mysql <br>
-DB_HOST=db <br>
-DB_PORT=3306 <br>
-</code>
-Fill in the rest on your own and change the port as needed.
-</p>
-<p>Setup the project in the background with the command <code>sudo docker-compose up -d</code> or <code>sudo docker-compose up</code> in the terminal.</p>
-<p>To seed the database with data run <code>sudo docker-compose exec app bash</code> and from the docker image cli first enter <code>php artisan migrate</code> than<code>php artisan db:seed
-</code></p>
+# SETUP
+
+To set up docker check the [official documentation](https://docs.docker.com/).
+
+To setup the app for the first time with docker use this command in cli ``sudo docker compose build app``.
+Make your ``.env`` file with the following params:
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE={NAME_OF_YOUR_DB}
+```
+
+You will need to create your own database. Migrations and schemas for tables are already included.
+
+Run ``composer update`` then ``composer install`` using ``PHP 8.0`` 
+
+To setup the project in the background use the command ``sudo docker-compose up -d`` or ``sudo docker-compose up`` in the terminal.
+
+To seed the database with data run ``sudo docker-compose exec app bash`` and from the docker image cli first enter ``php artisan migrate`` than ``php artisan db:seed``
+
 
 <p>Below is Laravel's standard README.md</p>
 

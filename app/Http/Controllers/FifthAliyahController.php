@@ -43,11 +43,11 @@ class FifthAliyahController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\FifthAliyah  $fifthAliyah
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(FifthAliyah $fifthAliyah)
     {
-        //
+        return response()->json(FifthAliyah::all());
     }
 
     /**

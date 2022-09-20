@@ -26,7 +26,6 @@ class SearchableAliyahModelService
      */
     public function getAliyah($request): ?string
     {
-        $result = null;
         $aliyahs = [
             OpeningTheArk::class => "Opening the ark",
             FirstAliyah::class => "First Aliyah",
@@ -47,9 +46,9 @@ class SearchableAliyahModelService
         foreach($aliyahs as $key => $value)
         {
             if($request['aliyah'] == $value)
-                $result =  $key;
+                return  $key;
         }
-        return $result;
+        return null;
     }
 
 }

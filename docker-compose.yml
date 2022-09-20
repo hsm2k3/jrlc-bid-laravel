@@ -22,7 +22,7 @@ services:
             - jrlc-bid-laravel
 
     db:
-        image: mysql:8.0.26
+        image: mysql:8.0.30
         container_name: jrlc-bid-laravel-db
         restart: unless-stopped
         environment:
