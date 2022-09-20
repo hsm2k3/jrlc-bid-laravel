@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Services\BidsHistoryService;
 use Illuminate\Http\Request;
+
+/**
+ * Responsible for displaying bid history.
+ */
 
 class BidController extends Controller
 {
@@ -38,15 +43,11 @@ class BidController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Bid  $bid
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bid $bid)
+
+    public function showAll(BidsHistoryService $bidHistoryService)
     {
-        //
+
+        return response()->json($bidHistoryService->getBidsHistoryForAllHolidays());
     }
 
     /**

@@ -69,7 +69,7 @@ class BidsController extends Controller
             return response(200);
         }
         else
-            return response(404);
+            return response(204);
     }
 
     /**
