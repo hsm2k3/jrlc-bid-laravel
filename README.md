@@ -17,6 +17,8 @@ Run ``composer update`` then ``composer install`` using ``PHP 8.0``
 
 To setup the project in the background use the command ``sudo docker-compose up -d`` or ``sudo docker-compose up`` in the terminal.
 
+To access the database use ``docker compose exec db bash``.
+
 To seed the database with data run ``sudo docker-compose exec app bash`` and from the docker image cli first enter ``php artisan migrate`` than ``php artisan db:seed``
 
 
