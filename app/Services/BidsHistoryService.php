@@ -25,34 +25,36 @@ use App\Models\ThirdAliyah;
 class BidsHistoryService
 {
 
-    public function getBidsHistoryForAllHolidays()
+    public function getBids()
     {
         $holidays = Holiday::all();
         foreach($holidays as $holiday)
         {
             $highestBids = $this->setBidsHistory($holiday->id);
-            $json[] = ["key" => $holiday->id, "title" => $holiday->holiday, "biddingItems" =>  $highestBids];
+            if(!empty($highestBids)) {
+                $json[] = ["key" => $holiday->id, "title" => $holiday->holiday, "biddingItems" => $highestBids];
+            }
         }
         return $json;
     }
 
     private function setBidsHistory($id)
     {
-        $bidHistory[] = OpeningTheArk::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = FirstAliyah::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = SecondAliyah::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = ThirdAliyah::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = FourthAliyah::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = FifthAliyah::select('id', 'aliyah', 'name', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = Maftir::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = HagBahOne::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = HagBahTwo::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = GelilahOne::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = GelilahTwo::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = PuttingOnTheCrownOne::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = PuttingOnTheCrownTwo::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = PuttingOnTheShieldOne::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        $bidHistory[] = PuttingOnTheShieldTwo::select('id', 'amount', 'name', 'designation', 'email', 'phone', 'comment', 'aliyah')->where('holiday_id' , $id)->latest('updated_at')->firstOrFail();
-        return $bidHistory;
+        $bidHistory[] = OpeningTheArk::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = FirstAliyah::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = SecondAliyah::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = ThirdAliyah::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = FourthAliyah::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = FifthAliyah::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = Maftir::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = HagBahOne::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = HagBahTwo::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = GelilahOne::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = GelilahTwo::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = PuttingOnTheCrownOne::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = PuttingOnTheCrownTwo::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = PuttingOnTheShieldOne::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        $bidHistory[] = PuttingOnTheShieldTwo::select('created_at', 'name', 'aliyah', 'designation', 'email', 'phone', 'comment', 'amount')->where('holiday_id' , $id)->where('name', '!=', '')->get()->sortDesc()->toArray();
+        return array_filter($bidHistory);
     }
 }

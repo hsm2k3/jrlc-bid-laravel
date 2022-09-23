@@ -46,8 +46,9 @@ class BidController extends Controller
 
     public function showAll(BidsHistoryService $bidHistoryService)
     {
-
-        return response()->json($bidHistoryService->getBidsHistoryForAllHolidays());
+        $holidaysWithNestedBids = $bidHistoryService->getBids();
+//        return response()->json($holidaysWithNestedBids);
+        return view('bid-history', compact('holidaysWithNestedBids'));
     }
 
     /**
