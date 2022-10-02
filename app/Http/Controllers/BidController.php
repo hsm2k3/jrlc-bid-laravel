@@ -48,7 +48,10 @@ class BidController extends Controller
     {
         $holidaysWithNestedBids = $bidHistoryService->getBids();
 //        return response()->json($holidaysWithNestedBids);
-        return view('bid-history', compact('holidaysWithNestedBids'));
+        if($holidaysWithNestedBids)
+            return view('bid-history', compact('holidaysWithNestedBids'));
+        else
+            return response("No Content", 204);
     }
 
     /**

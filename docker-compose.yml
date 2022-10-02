@@ -11,7 +11,7 @@ services:
         container_name: jrlc-bid-laravel-app
         restart: unless-stopped
         working_dir: /var/www/
-#        command: bash -c "php artisan migrate:fresh && php artisan db:seed"
+#        command: bash -c "php artisan migrate:fresh --seed"
 #        depends_on:
 #            -   db
 #        links:
@@ -41,8 +41,10 @@ services:
         image: nginx:alpine
         container_name: jrlc-bid-laravel-nginx
         restart: unless-stopped
+        # port forwarding is done on the verizon router to my.pc.ip.address:8081
+        # Docker will listen on port 8081 and transmit information to the image which is listening on port 80
         ports:
-            - '8000:80'
+            - '8081:80'
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/

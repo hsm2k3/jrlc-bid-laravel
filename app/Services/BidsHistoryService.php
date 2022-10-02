@@ -27,6 +27,7 @@ class BidsHistoryService
 
     public function getBids()
     {
+        $json = array();
         $holidays = Holiday::all();
         foreach($holidays as $holiday)
         {
