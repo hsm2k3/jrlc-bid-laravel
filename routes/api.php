@@ -25,7 +25,7 @@ Route::get('/bids', [BidsController::class, 'index']);
 Route::post('/bids/{id}/create', [BidsController::class, 'create']);
 Route::get ('/bids/all', [BidsController::class, 'show']);
 Route::get('/bids/fifthaliyah', [FifthAliyahController::class, 'show']);
-Route::get('bids/history', [BidController::class, 'showAll']);
+Route::get('/bids/history', [BidController::class, 'showAll']);
 
 Route::fallback(function() {
     return 'Access Denied';
